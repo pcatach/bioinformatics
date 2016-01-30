@@ -1,0 +1,53 @@
+import random
+
+def Profile(Motifs):
+    prof=[]
+    for i in range(len(Motifs[0])):
+        A=C=G=T=0
+        for j in range(len(Motifs)):
+            if Motifs[j][i]=='A':
+                A+=1
+            if Motifs[j][i]=='C':
+                C+=1
+            if Motifs[j][i]=='G':
+                G+=1
+            if Motifs[j][i]=='T':
+                T+=1
+        n=A+C+G+T
+        prof.append([A/n,C/n,G/n,T/n])
+    return prof
+
+def Score(motifs):
+    s=0
+    for i in range(len(motifs[0])):
+        lst=[]
+        for k in range(len(motifs)):
+            lst.append(motifs[k][i])
+        for j in range(len(motifs)):
+           if motifs[j][i] != max(set(lst), key=lst.count):
+               s+=1
+    return s
+
+def Motifs(Profile, Dna):
+    k = len(Profile[0])
+    Motifs = []
+    for i in range(len(Dna)):
+        motif = Dna[i][:k]
+        for j in range(len(Dna[i])):
+            
+
+def RandomizedMotifSearch(Dna, k, t):
+    Motifs = []
+    for i in range(t):
+        seed = random.randrange(len(Dna[t]))
+        motif = Dna[t][seed:seed+k]
+        Motifs.append(motif)
+    BestMotifs = Motifs
+
+    while 1==1:
+        Profile = Profile(Motifs)
+        Motifs = Motifs(Profile, Dna)
+        if Score(Motifs) < Score(BestMotifs):
+            BestMotifs = Motifs
+        else:
+            return BestMotifs

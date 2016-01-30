@@ -1,0 +1,10 @@
+f1 = open('resp.txt')
+f2 = open('base.txt')
+
+t = True
+
+for i in range(len(f1)):
+    if f1[i] != f2[i]:
+        t=false
+
+print t

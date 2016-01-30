@@ -1,0 +1,17 @@
+def main(Text,k,Profile):
+    l=genKmers(k,Profile)
+    d={}
+    for kmer in l:
+        if kmer in Text:
+            if kmer in d:
+                d[kmer]+=1
+            else:
+                d[kmer]=1
+    i=(d.values()).index(max(d.values))
+    print(d.keys()[i])
+
+arq=input()
+file=open(arq)
+for line in file:
+    print(line)
+    
